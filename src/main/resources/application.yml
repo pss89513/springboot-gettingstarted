@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tutorial?autoReconnect=true
+    url: jdbc:mysql://localhost:3306/tutorial?autoReconnect=true&useUnicode=true&characterEncoding=utf8
     username: root
-    password: 890513
+    password: passw0rd
   jpa:
     hibernate:
       ddl-auto: create
