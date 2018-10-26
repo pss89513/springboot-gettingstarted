@@ -1,4 +1,7 @@
 spring:
+  profiles:
+    active: ${active:local}
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/tutorial?autoReconnect=true&useUnicode=true&characterEncoding=utf8
@@ -12,3 +15,29 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+---
+spring:
+  profiles: local
+
+server:
+  port: 8080
+
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tutorial?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: ${dbuser}
+    password: ${dbpassword}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+server:
+  port: ${port}
